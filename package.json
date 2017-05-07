@@ -1,0 +1,32 @@
+{
+  "name": "engine-blueprint",
+  "version": "0.1.0",
+  "description": "Ember CLI blueprint for initializing a new stand-alone engine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ember-engines/engine-blueprint.git"
+  },
+  "keywords": [
+    "ember-addon",
+    "ember-blueprint"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ember-engines/engine-blueprint/issues"
+  },
+  "homepage": "https://github.com/ember-engines/engine-blueprint#readme",
+  "dependencies": {
+    "ember-cli-lodash-subset": "^1.0.12",
+    "ember-cli-string-utils": "^1.1.0",
+    "exists-sync": "^0.0.4",
+    "walk-sync": "^0.3.1"
+  },
+  "ember-addon": {
+    "main": "ember-addon-main.js"
+  }
+}
