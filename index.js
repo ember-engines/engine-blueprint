@@ -7,6 +7,7 @@ const walkSync = require('walk-sync');
 const existsSync = require('exists-sync');
 const uniq = require('ember-cli-lodash-subset').uniq;
 const sortPackageJson = require('sort-package-json');
+const fs = require('fs-extra');
 
 const stringifyAndNormalize = require('ember-cli/lib/utilities/stringify-and-normalize');
 
@@ -121,6 +122,16 @@ module.exports = Object.assign({}, Addon, {
     let type = this.options && this.options.type || 'routable';
     let packagePath = path.join(this.path, 'files', type + '-files', fileName);
     this._writeFileSync(packagePath, stringifyAndNormalize(contents));
+  },
+
+  afterInstall() {
+    let type = this.options && this.options.type || 'routable';
+    let packagePath = path.join(this.path, 'files', type + '-files', 'package.json');
+    let bowerPath = path.join(this.path, 'files', type + '-files', 'bower.json');
+
+    [packagePath, bowerPath].forEach(filePath => {
+      fs.removeSync(filePath);
+    });
   }
 
 });
