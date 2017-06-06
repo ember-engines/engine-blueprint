@@ -19,7 +19,8 @@ module.exports = Object.assign({}, Addon, {
 
     return Object.assign(superLocals, {
       hasLazyFlag: typeof options.lazy !== 'undefined',
-      isLazy: !!options.lazy
+      isLazy: !!options.lazy,
+      welcome: false
     });
   },
 
