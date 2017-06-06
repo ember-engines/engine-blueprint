@@ -51,7 +51,7 @@ module.exports = Object.assign({}, Addon, {
   },
 
   filesPath() {
-    let type = this.options && this.options.type || 'routable';
+    let type = this._getEngineType();
     return path.join(this.path, "files", type + '-files');
   },
 
@@ -84,7 +84,7 @@ module.exports = Object.assign({}, Addon, {
   },
 
   srcPath(file) {
-    let type = this.options && this.options.type || 'routable';
+    let type = this._getEngineType();
     let engineFilePath = path.join(this.path, "files", type + '-files', file);
     let addonFilePath = path.resolve(this._addonBlueprint.path, 'files', file);
     if (existsSync(engineFilePath)) {
@@ -113,19 +113,24 @@ module.exports = Object.assign({}, Addon, {
   },
 
   _readEngineContentsFromFile(fileName) {
-    let type = this.options && this.options.type || 'routable';
+    let type = this._getEngineType();
     let packagePath = path.join(this.path, 'files', type + '-files', fileName);
     return this._readJsonSync(packagePath);
   },
 
   _writeContentsToFile(contents, fileName) {
-    let type = this.options && this.options.type || 'routable';
+    let type = this._getEngineType();
     let packagePath = path.join(this.path, 'files', type + '-files', fileName);
     this._writeFileSync(packagePath, stringifyAndNormalize(contents));
   },
 
+  _getEngineType() {
+    if (this._engineType) { return this._engineType; }
+    return this._engineType = this.options && this.options.type || 'routable';
+  },
+
   afterInstall() {
-    let type = this.options && this.options.type || 'routable';
+    let type = this._getEngineType();
     let packagePath = path.join(this.path, 'files', type + '-files', 'package.json');
     let bowerPath = path.join(this.path, 'files', type + '-files', 'bower.json');
 
