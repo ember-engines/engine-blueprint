@@ -101,7 +101,7 @@ module.exports = Object.assign({}, Addon, {
     }
   },
 
-  generatePackageJson: function(options, isInstall) {
+  generatePackageJson(options, isInstall) {
     Addon.generatePackageJson.apply(this, arguments);
 
     let contents = this._readEngineContentsFromFile('package.json');
