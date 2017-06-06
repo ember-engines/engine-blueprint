@@ -17,7 +17,11 @@ module.exports = Object.assign({}, Addon, {
   locals(options) {
     let superLocals = Addon.locals(...arguments);
 
+    let engineName = options.entity.name;
+    let engineModulePrefix = stringUtil.dasherize(engineName);
+
     return Object.assign(superLocals, {
+      engineModulePrefix,
       hasLazyFlag: typeof options.lazy !== 'undefined',
       isLazy: !!options.lazy,
       welcome: false
