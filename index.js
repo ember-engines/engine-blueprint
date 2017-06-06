@@ -103,7 +103,7 @@ module.exports = Object.assign({}, Addon, {
     let contents = this._readEngineContentsFromFile('package.json');
 
     // Add `ember-engines` to devDependencies by default
-    contents.devDependencies['ember-engines'] = '*';
+    contents.devDependencies['ember-engines'] = '^0.5.4';
 
     // Move `ember-cli-htmlbars` into dependencies from devDependencies
     contents.dependencies['ember-cli-htmlbars'] = contents.devDependencies['ember-cli-htmlbars'];
