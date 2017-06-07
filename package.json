@@ -24,6 +24,8 @@
     "ember-cli-lodash-subset": "^1.0.12",
     "ember-cli-string-utils": "^1.1.0",
     "exists-sync": "^0.0.4",
+    "fs-extra": "^3.0.0",
+    "sort-package-json": "^1.4.0",
     "walk-sync": "^0.3.1"
   },
   "ember-addon": {
