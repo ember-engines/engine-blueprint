@@ -3,7 +3,7 @@ const path = require('path');
 const MainBlueprint = require('../../../index');
 
 /*
-  Create an "addon blueprint" that simply defers to our
+  TODO: Create an "addon blueprint" that simply defers to our
   top level entry point as the blueprint.
   This is basically just a work around for
   https://github.com/ember-cli/ember-cli/issues/6952.
