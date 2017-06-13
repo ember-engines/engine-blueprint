@@ -59,8 +59,6 @@ module.exports = Object.assign({}, Addon, {
     return path.join(this.path, "files", type + '-files');
   },
 
-  // Monkey-patch files method in order to call this.filesPath()
-  // This may need to be fixed upstream.
   files() {
     if (this._files) { return this._files; }
 
