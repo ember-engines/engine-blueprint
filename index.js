@@ -111,7 +111,6 @@ module.exports = Object.assign({}, Addon, {
     delete contents.devDependencies['ember-cli-htmlbars'];
 
     this._writeContentsToFile(sortPackageJson(contents), 'package.json');
-    contents = this._readEngineContentsFromFile('package.json');
   },
 
   _readEngineContentsFromFile(fileName) {
