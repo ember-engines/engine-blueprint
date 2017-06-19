@@ -1,7 +1,9 @@
 'use strict';
 
+const globalModulesDir = require('global-modules');
+
 const path = require('path');
-const Addon = require('ember-cli/blueprints/addon/index');
+const Addon = require(`${globalModulesDir}/ember-cli/blueprints/addon/index`);
 const stringUtil = require('ember-cli-string-utils');
 const walkSync = require('walk-sync');
 const existsSync = require('exists-sync');
@@ -9,7 +11,7 @@ const uniq = require('ember-cli-lodash-subset').uniq;
 const sortPackageJson = require('sort-package-json');
 const fs = require('fs-extra');
 
-const stringifyAndNormalize = require('ember-cli/lib/utilities/stringify-and-normalize');
+const stringifyAndNormalize = require(`${globalModulesDir}/ember-cli/lib/utilities/stringify-and-normalize`);
 
 module.exports = Object.assign({}, Addon, {
   description: 'Creates a stand-alone Engine for Ember.js.',
