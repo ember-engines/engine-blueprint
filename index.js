@@ -25,6 +25,7 @@ module.exports = Object.assign({}, Addon, {
     return Object.assign(superLocals, {
       engineModulePrefix,
       isLazy: !!options.lazy,
+      includeRoutesInApplication: !options.excludeRoutesFromApplication,
       welcome: false
     });
   },
@@ -43,6 +44,11 @@ module.exports = Object.assign({}, Addon, {
       name: 'lazy',
       type: Boolean,
       description: 'Whether this Engine should load lazily or not'
+    },
+    {
+      name: 'exclude-routes-from-application',
+      type: Boolean,
+      description: 'Whether this Engine should exclude its routes from the applications vendor file or not'
     }
   ],
 
