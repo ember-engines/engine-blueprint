@@ -43,6 +43,7 @@ module.exports = Object.assign({}, Addon, {
     {
       name: 'lazy',
       type: Boolean,
+      default: false,
       description: 'Whether this Engine should load lazily or not'
     },
     {
