@@ -77,8 +77,6 @@ module.exports = Object.assign({}, Addon, {
     this._addonBlueprint = this.lookupBlueprint('addon');
     let addonFiles = this._addonBlueprint.files();
 
-    this.generatePackageJson();
-
     let filesPath = this.filesPath(this.options);
     let engineFiles = [];
     if (existsSync(filesPath)) {
@@ -107,31 +105,18 @@ module.exports = Object.assign({}, Addon, {
     }
   },
 
-  generatePackageJson(options, isInstall) {
-    Addon.generatePackageJson.apply(this, arguments);
-
-    let contents = this._readEngineContentsFromFile('package.json');
+  updatePackageJson(contents) {
+    contents = Addon.updatePackageJson.apply(this, arguments);
+    contents = JSON.parse(contents)
 
     // Add `ember-engines` to devDependencies by default
-    contents.devDependencies['ember-engines'] = '^0.5.4';
+    contents.devDependencies['ember-engines'] = '^0.5.14';
 
     // Move `ember-cli-htmlbars` into dependencies from devDependencies
     contents.dependencies['ember-cli-htmlbars'] = contents.devDependencies['ember-cli-htmlbars'];
     delete contents.devDependencies['ember-cli-htmlbars'];
 
-    this._writeContentsToFile(sortPackageJson(contents), 'package.json');
-  },
-
-  _readEngineContentsFromFile(fileName) {
-    let type = this._getEngineType();
-    let packagePath = path.join(this.path, 'files', type + '-files', fileName);
-    return this._readJsonSync(packagePath);
-  },
-
-  _writeContentsToFile(contents, fileName) {
-    let type = this._getEngineType();
-    let packagePath = path.join(this.path, 'files', type + '-files', fileName);
-    this._writeFileSync(packagePath, stringifyAndNormalize(contents));
+    return stringifyAndNormalize(sortPackageJson(contents));
   },
 
   _getEngineType() {
