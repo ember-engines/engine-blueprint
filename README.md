@@ -6,5 +6,5 @@ used in conjunction with [ember-engines](https://github.com/ember-engines/ember-
 ## Usage
 
 ```bash
-ember new foo-engine -b git@github.com:ember-engines/engine-blueprint.git
+ember new foo-engine -b https://github.com/ember-engines/engine-blueprint.git
 ```
