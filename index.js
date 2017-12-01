@@ -86,6 +86,9 @@ module.exports = Object.assign({}, Addon, {
 
     let files = uniq(appFiles.concat(addonFiles).concat(engineFiles));
 
+    let addonGitKeep = files.indexOf('addon/.gitkeep');
+    files.splice(addonGitKeep, 1);
+
     // Remove app/.gitkeep, engines don't need app directories
     let appGitKeep = files.indexOf('app/.gitkeep');
     files.splice(appGitKeep, 1);
