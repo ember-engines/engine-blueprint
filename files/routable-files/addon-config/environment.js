@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  const ENV = {
+  let ENV = {
     modulePrefix: '<%= engineModulePrefix %>',
     environment
   };
