@@ -27,25 +27,13 @@ async function emberNew({
   });
 }
 
-async function emberInit({
-  args = [],
-  cwd
-}) {
-  return await _emberInit({
-    args: [
-      '-sn',
-      ...args
-    ],
-    cwd
-  });
-}
 
 describe('blueprint', function() {
   this.timeout(10 * 1000);
 
   setUpBlueprintMocha.call(this);
 
-  this.blueprintPath = blueprintpath;
+  this.blueprintPath = projectroot;
 
   it('works with default options', async function() {
     let cwd = await emberNew({
