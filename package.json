@@ -4,7 +4,7 @@
   "description": "Ember CLI blueprint for initializing a new stand-alone engine.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha node-tests --recursive"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,11 @@
   },
   "ember-addon": {
     "main": "ember-addon-main.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-fs": "^2.0.0",
+    "ember-cli-update-test-helpers": "^0.4.2",
+    "mocha": "^7.1.1"
   }
 }
