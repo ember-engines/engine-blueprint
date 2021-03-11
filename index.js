@@ -119,6 +119,11 @@ module.exports = Object.assign({}, Addon, {
     contents = Addon.updatePackageJson.apply(this, arguments);
     contents = JSON.parse(contents)
 
+    // Add `ember-engine` keyword
+    if (contents.keywords.indexOf('ember-engine') === -1) {
+      contents.keywords.push('ember-engine');
+    }
+
     // Add `ember-engines` to devDependencies by default
     contents.devDependencies['ember-engines'] = '^0.8.5';
 
