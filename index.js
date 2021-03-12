@@ -120,11 +120,7 @@ module.exports = Object.assign({}, Addon, {
     contents = JSON.parse(contents)
 
     // Add `ember-engines` to devDependencies by default
-    contents.devDependencies['ember-engines'] = '^0.8.5';
-
-    // Move `ember-cli-htmlbars` into dependencies from devDependencies
-    contents.dependencies['ember-cli-htmlbars'] = contents.devDependencies['ember-cli-htmlbars'];
-    delete contents.devDependencies['ember-cli-htmlbars'];
+    contents.devDependencies['ember-engines'] = '^0.8.12';
 
     return stringifyAndNormalize(sortPackageJson(contents));
   },
