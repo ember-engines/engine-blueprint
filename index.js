@@ -20,6 +20,8 @@ const stringifyAndNormalizePath = require.resolve('ember-cli/lib/utilities/strin
 });
 const stringifyAndNormalize = require(stringifyAndNormalizePath);
 
+const EMBER_ENGINES_VERSION = '^0.8.13';
+
 module.exports = Object.assign({}, Addon, {
   description: 'Creates a stand-alone Engine for Ember.js.',
 
@@ -120,7 +122,11 @@ module.exports = Object.assign({}, Addon, {
     contents = JSON.parse(contents)
 
     // Add `ember-engines` to devDependencies by default
-    contents.devDependencies['ember-engines'] = '^0.8.12';
+    contents.devDependencies['ember-engines'] = EMBER_ENGINES_VERSION;
+
+    // Add `ember-engines` to peerDependencies by default
+    contents.peerDependencies = contents.peerDependencies || {};
+    contents.peerDependencies['ember-engines'] = EMBER_ENGINES_VERSION;
 
     return stringifyAndNormalize(sortPackageJson(contents));
   },
